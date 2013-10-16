@@ -1,0 +1,4 @@
+export MILKODE_DEFAULT_DIR=/home/ongaeshi/web/mrubysearch/data
+/usr/local/bin/milk update --all
+# /usr/local/bin/milk update mruby-uv
+
