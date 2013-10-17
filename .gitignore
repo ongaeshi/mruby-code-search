@@ -4,4 +4,6 @@ Gemfile.lock
 pkg/*
 vendor/*
 data/*
+!data/milkode.yaml
+!data/milkweb.yaml
 source/*
