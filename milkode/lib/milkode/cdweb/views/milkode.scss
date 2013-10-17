@@ -1,0 +1,276 @@
+body {
+}
+
+div.header {
+}
+
+div.footer {
+}
+
+/* search-summary */
+
+div.search-summary {
+    /* border-color: #e92926; */
+    /* background-color:#FFF0F0; */
+    border-color: #C0C0C0;
+    background-color: #FAFAFA;
+    border-top-style:solid;
+    border-top-width:1px;
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    margin-bottom:1em;
+    margin-top:1em;
+    padding-bottom:5px;
+    padding-top:5px;
+    padding-left:5px;
+}
+
+.search-summary .keyword {
+    font-weight: bold;    
+}
+
+.search-summary .ss-box {
+    float: left;
+    margin-right: 5px;
+}
+
+.search-summary .ss-end {
+    clear: both;
+}
+
+/* result */
+
+dt.result-record {
+    font-size: 105%;
+    margin-top: 5px;
+}
+
+dt.result-record-empty {
+    margin-top: 5px;
+}
+dt.result-file {
+    font-size: 95%;
+}
+
+#result-refinement {
+    font-size:80%;
+    font-weight:500;
+}
+
+div.pagination {
+    /* border-color: #e92926; */
+    /* background-color:#FFF0F0; */
+    border-color: #C0C0C0;
+    background-color: #FBFBFB;
+    border-top-style:solid;
+    border-top-width:1px;
+    /* text-align: center; */
+    margin-bottom: 20px;
+}
+
+pre {
+    white-space: pre;
+}
+
+pre.lines {
+    border: 1px solid #dedede;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    background-color: #fdfdfd;
+    font-weight: inherit;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.sort-change {
+    font-weight: bold;    
+    margin-right: 10px;
+}
+
+font.version {
+    font-size: 35%;
+}
+
+a.headmenu {
+    font-size: 40%;
+    font-weight: normal;
+}
+
+input#query {
+    height: 24px;
+    font-size: 12px;
+}
+
+input#search {
+    margin-left: 10px;
+    width: 80px;
+    height: 36px;
+    font-size: 20px;
+}
+
+input#newtab {
+    margin-left: 0px;
+    width: 60px;
+    height: 32px;
+    font-size: 12px;
+}
+
+input#clear {
+    margin-left: 0px;
+    width: 60px;
+    height: 32px;
+    font-size: 12px;
+}
+
+ul.unstyled_margin {
+    list-style: none;
+    margin-left: 7px;
+}
+
+select#shead {
+    margin-top: 7px;
+    width: 120px;
+}
+
+label.ui-corner-all {
+    line-height: 12px;
+}
+
+/* toppage */
+
+#toppage {
+    font-size: 14px;
+}
+
+#toppage ul a {
+    font-size: 17px;
+}
+
+#toppage ul {
+    font-size: 15px;
+}
+
+#toppage a {
+    font-size: 17px;
+}
+
+#toppage h1 {
+    font-size: 72px;
+    margin-top: 50px;
+}
+
+#toppage .header {
+}
+
+#toppage .form {
+    margin-top: 60px;
+}
+
+#toppage form {
+    margin-bottom: 0px;
+}
+
+#toppage #select_package {
+    margin-bottom: 50px;
+}
+
+#toppage .footer {
+}
+
+/* mainpage */
+
+#mainpage {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+#mainpage .header {
+    margin-top: 20px;
+}
+
+#mainpage .search_form {
+    margin-top: 15px;
+}
+
+/* mainpage - help */
+
+#mainpage .help-content {
+    margin-top: 20px;
+}
+
+#mainpage .help-content h1 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+#mainpage .help-content h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+#mainpage .help-content ul li {
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#mainpage .help-content p {
+    font-size: 108%;
+    margin-left: 10px;
+}
+
+#mainpage .help-content img {
+    margin-left: 10px;
+}
+
+#mainpage .help-content pre {
+    margin-left: 10px;
+}
+
+#mainpage .help-content .comment {
+    color: #008E1D;
+}
+
+/* mainpage - info_package */
+
+#mainpage .info-package-content {
+    margin-top: 25px;
+}
+
+#mainpage .info-package-content h1 {
+    margin-bottom: 15px;
+}
+
+#mainpage .info-package-content h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* lineno-modal */
+
+#lineno-copyall {
+    font-size: 13px;
+}
+
+/* star */
+
+.star {
+     text-indent: -5000px;
+     display: block;
+     background: transparent url(<%= url_for "/images/milkode-star.png" %>) 20px;
+     height: 20px;
+     width: 20px;
+}
+
+.star.favorited {
+     background-position: 0px;
+}
+
+/* */
+
+.highlight-filename {
+    background-color: #d0ff9c;
+}
+

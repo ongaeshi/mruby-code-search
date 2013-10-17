@@ -1,0 +1,18 @@
+= haml :header_menu
+
+.content
+  = haml :search_form
+
+  .search-summary
+    .favstar.ss-box
+      #{favstar(@path)}
+    .keyword.ss-box
+      #{topic_path(@path, params)}
+    .total-entries.ss-box
+      #{@total_records}件（#{@elapsed}秒）
+    .search-summary-hook.ss-box
+      #{search_summary_hook(@path)}
+    .ss-end
+  ~ @record_content
+
+

@@ -1,0 +1,557 @@
+=== 1.2.0 2013/08/07
+
+* milk web
+  * Hightlight filename keywords
+  * Not show file infomation when same file name continue
+  * Delete auto search feature 'w:0' and 'fp:a b'
+  * Bugfix relative URL (clippy, 同名ファイルへのリンク) (thanks nicklegr)
+
+* milk
+  * milk update
+    * Remove ignored files with update
+  * milk ignore
+    * Support global ignore. 'milk ignore --global ~/.gitignore'
+  * milk config
+    * Add 'milk config KEY VALUE' command.
+    * e.g. 'milk config update_with_ctags_e true'
+  * milk remove
+    * Faster DocumentTable#remove_records
+    * Not remove package non exist filename
+  * milk cleanup
+    * Add milk cleanup options. -p, -a
+  * milk add
+    * 'milk add' can't use already exist package
+
+=== 1.1.0 2013/06/26
+
+* milk web
+  * Support relative URL (e.g. http://example.com/milkode)
+  * Change milkode.css -> milkode.scss (For url_for)
+
+* milk
+  * 'milk files' add --all option
+
+* gmilk
+  * Add exist_command?('cat')
+  * Change how to call exist_command?
+
+* etc
+  * Add sinatra-url-for
+
+=== 1.0.2 2013/06/08
+
+* gmilk
+  * ファイル内検索を外部ツールと連携して高速化する機能を追加
+  * -m(--match-files) オプションを追加
+  * -e (-external-tool) オプションを追加
+  * 検索するレコード数が多い時は"-e grep"で検索するように
+  * --no-external オプションを追加
+
+=== 1.0.0 2013/05/21
+
+* milk web
+  * 統計情報
+    * 拡張子絞り込みのリンクを追加
+    * unknownの表示形式を変更
+      * 旧: 'hoge.list' -> 'unknown'
+      * 新: 'hoge.list' -> '.list'
+
+* gmilk
+  * Windows環境でgmilkが動かない問題を修正
+
+* etc  
+  * test/unit 2.5.4 で警告が出る箇所を修正
+
+=== 0.9.9.9 2013/05/05
+
+* milk web
+  * お気に入りリスト
+    * お気に入りを付けたパッケージにすぐアクセス出来る
+    * ☆マークをクリックでwebアプリからも設定が可能に
+
+  * 統計情報ボタンの設置
+    * ファイル数、行数、言語別割合の表示をWebインターフェースで
+
+  * 「新規タブ」ボタンを設置
+    * タブを開きながら検索
+  
+  * help.haml
+    * 全体的にリニューアル
+    * 'w:' オプションについて追記
+
+* gmilk
+  * 依存関係を整理して、起動時間の高速化 
+  * ダイレクトパス検索('gmilk /path/to/file:5')に関してはさらに高速化
+  * gmilk -d が正しく動いていない問題を修正
+
+* milk
+  * milk fav --sync-yaml を追加
+    * webアプリ経由のお気に入り設定をyamlに取り込む
+
+* etc
+  * Ruby2.0.0 に対応
+    * test/test_milkode_yaml.rb が動かない問題を修正: Yaml#dumpの取得形式が変わった
+    * Gemfile更新: test-unit >= 2.5.4
+    * .travis.yml に Ruby2.0 を追加
+
+  * Gemfile
+    * 'thor 0.18.1' に対応
+    * 'rack 1.5.2' に対応
+  
+  * ファイル構造の整理 : findgrep/findgrep.rb -> grep/findgrep.rb
+
+* バグ修正
+  * Issues#47 add meta tag for favicon (thanks y-ken)
+
+=== 0.9.9 2013/02/26
+
+* ワイド範囲検索のサポート
+  * 指定行内に複数のキーワードが含まれている場所を探す
+  * 複数のキーワードが一行でマッチしなかった場合、自動的に範囲を広げて再検索
+
+* 検索オプション w: を追加
+  * w:7 で7行以内に全てのキーワードが含まれている場所を返す
+  * w:1 で今までの検索
+  * w:0 の時は検索範囲をファイル全域に
+
+* Support sinatra-reloader
+  * export MILKODE_SINATRA_RELOADER=1
+
+* Delete 'milkode/cdweb/app_error.rb'
+
+=== 0.9.8 2013/02/27
+
+* Support MyGithub
+  * https://github.com/ongaeshi/mygithub
+
+=== 0.9.7 2012/01/29
+
+* Support rroonga 2.1.x
+
+* Support TravisCI 
+  * https://travis-ci.org/ongaeshi/milkode
+  * Util#truncate_nsec を追加
+
+* milk
+  * 'milk files -r' を追加
+  * 非データベースディレクトリでも'milk files'出来るように
+  * 'milk list -d' (ディレクトリのみ表示) を追加
+
+* gmilk
+  * 一部の単語が正しくマッチするように修正 ('a-list'等)
+  * Windows環境でも日本語検索を可能に
+
+=== 0.9.6 2012/12/28
+
+* milk web
+  * 絞り込み検索
+    * 拡張子で絞り込み
+    * ディレクトリで絞り込み
+  * ファイル名 + キーワード検索
+    * 'path/to/file def kwd'で'path/to/dir'ファイル内の'def kwd'を含む行を検索可能に
+  * あいまいジャンプ
+    * 'a/filename:15' でマッチしたファイルの指定行に直接ジャンプ
+    * 検索マッチ数が1つの時はファイル本体を表示
+    * g:オプションを付けると確実にジャンプ
+  * おすすめ検索クエリ
+    * ファイル名+キーワード(fp:)、あいまいジャンプモード(g:) 等のクエリを示唆
+  * faviconに対応
+  * その他
+    * 'AName name'で検索した時、'name'は大文字／小文字どちらでもマッチするように
+    * 範囲セレクトボックスを切り替えた時に自動的に再検索
+    * milkode.js: コーディングスタイル変更
+  * バグ修正
+    * Windows環境にて、左上の範囲セレクトボックスが文字化けする問題を修正
+    * .gitignoreが非UTF-8でも読み込めるように
+
+* milk
+  * svnに対応 (milk add -p svn http://svn/trunk -n a_proj)
+  * milk remove, rebuild の高速化
+  * 'タブを複製'ボタンを押すとアンカーが消えてしまう問題を修正
+  * データベースディレクトリで milk pwd した時は専用メッセージ (On database in XXX)
+
+=== 0.9.5 2012/12/09
+
+* milk web 
+  * 行番号クリック時のモーダルにコピーボタンを配置
+    * 'ダイレクトパスのコピー' ボタン
+    * 'Lineno + Text' ボタン
+  * バグ修正
+    * 総マッチ数が正しく表示されないバグを修正 (thanks yosyyy)
+    * search_gotoline.rb: ファイル名のリンク位置修正
+    * typo
+
+* milk
+  * 'milk add --empty' オプションを追加
+
+=== 0.9.4 2012/11/14
+
+* milk web
+  * 行番号クリック時の処理を改善 
+    * ウィンドウをモーダルに変更
+    * ハイライト、URLを選択行に差し替え (thanks asane)
+  * 検索ボックスの操作性を改善 (thanks kenhys)
+    * Select query text on click event
+    * keep query text selected after searching
+    * suppress select() call for query text by tag jump
+  * パッケージ一覧のソートのルールを整理
+  * ソースコードの文字コードがEUC-JPの場合、検索結果に表示される日本語が文字化けする問題を修正 (thanks azurite)
+  * 文言修正 : '新しい検索' -> 'タブを複製'
+
+* milk
+  * milk remove 改善
+  * milk init /path/to/dir -s が正しく動作しない問題を修正
+  * milkode_yaml.rb: package_root の正規表現調整
+  * 他のオプションとのバッティングを防ぐために milk -v は使えないように、 milk --version を推奨
+  * 拡張子 csproj, vbproj, sln に対応 (VisualStudio)
+  * document_table.rb: addするとnegative string size (or size too big) (ArgumentError)となる問題を修正 (thanks azurite)
+
+* Bug fix
+  * termcolorの要求バージョンを '< 1.2.2' に (thanks mallowlabs)
+
+=== 0.9.3.1 2012/10/14
+
+* 'milk plugins' add gem-milkode, bundle-milkode
+* Support removing by path
+
+=== 0.9.3 2012/10/06
+
+* milk web
+  * Webインターフェースからのアップデートに対応
+
+* milk info
+  * ファイル数、行数、breakdown(種類別) 表示
+  * テーブル形式で表示 (-t)
+  * 全てのパッケージを表示 (-a)
+  * 種類別詳細表示 (-b)
+
+* milk
+  * milk plugins: add Milkode_Sublime
+  * milk add:     --no-auto-ignore の短縮形 -n を追加
+
+* database
+  * Add Updater
+  * IgnoreChecker の require忘れ
+
+* common
+  * grenfiletest.rb: Add ignore suffix
+  * Add PlgnDetector
+
+=== 0.9.2 2012/09/07
+
+* etc
+  * Add emacs plugin : [ongaeshi/emacs-milkode](https://github.com/ongaeshi/emacs-milkode)
+* milk
+  * Add 'milkode plugins' command
+  * [fatal] already exist 'Documents', [fatal] -> [warning]
+* gmilk
+  * strict_packages に対応
+
+=== 0.9.1.1 2012/08/07
+
+* milk web
+  * WebKitで行番号の表示が崩れてしまう問題を修正
+
+=== 0.9.1 2012/08/05
+
+* milk web
+  * パッケージセレクタの機能強化、入力テキストでフィルタリング可能に
+  * ホーム画面にもパッケージセレクタを追加
+  * 前方一致するパッケージ名が正しく検索出来ない問題を修正
+    * 例 : package_a, package_aaa 
+    * 検索オプションに strict_packages を使うように
+  * パッケージセレクタで'---'を選んだら全体検索に
+  * help.hamlの文言調整
+  * エラー対策
+    * 不正なURLが来てもエラーにしない
+    * 存在しないパッケージ名へのアクセス
+
+* gmilk
+  * --db DB_DIR オプションの追加、検索対象のデータベースを指定可能に
+  * -v オプションが正しく動いていなかった問題を修正
+
+* milk   
+  * .gitignore読み込み機能のバグ修正
+    * 無視したくないファイルリスト '![ファイル名]' に対応
+  * -v オプションが正しく動いていなかった問題を修正
+
+* database
+  * DocumentTable#search に :strict_package オプションを追加
+
+* etc
+  * 一部テストが正しく通過しない問題を修正
+  * HISTORYの追記忘れ
+
+=== 0.9.0 2012/07/09
+
+* milk web
+  * ページデザインを刷新
+    * メインページ以外もTwitter bootstrapに対応
+    * デザインの調整
+    * ファイル一覧 -> ディレクトリ に文章変更
+  * 検索時にキーワードにマッチするファイルも合わせて表示するように
+  * パッケージセレクタの追加 (thanks naoler)
+    * 現在パッケージ名を選択
+    * パッケージの切り替え
+  * ダイレクトジャンプ
+    * viewモードで行番号をクリックするとダイレクトパス(現在行を表すテキスト)を表示
+    * ダイレクトパス入力時に指定行に直接ジャンプ出来るように
+  * サジェスト表示
+    * .h や .hpp を開いている時に .c や .cpp を表示するように
+  * 検索オプション追加
+    * fp(fpath_or_packages)
+    * k(keyword)
+    * 大文字／小文字を区別する(:sensitive)
+  * バグ修正
+    * 空ファイルを表示出来ない問題を修正
+    * 半角スペースを含むファイルが正しく表示出来ない
+    * ファイル検索時に次の100件が表示されない
+  * ヘルプに文言追加
+  * Webアプリのテストを追加(test_cdweb_app)
+
+* gmilk
+  * 引数解析して'-g'オプション無くても-gモードに移行出来るように
+  * ダイレクトパス入力時に指定行に直接ジャンプ出来るように
+
+* database
+  * fpath_or_packages(fp)オプションに対応
+
+=== 0.8.1 2012/06/20
+
+* gmilk -a -u 時にエラーになる問題を修正 (thanks hazy_moon)
+
+=== 0.8.0 2012/06/20
+
+* milk web
+  * ホームから 最近使った、追加、更新、お気に入り のパッケージに直接ジャンプ出来るように
+  * パッケージ一覧のソート種類を指定可能に
+  * Twitter bootstrap に対応
+
+* database
+  * groongaデータベースのアクセスを一元化
+  * DocumentTable
+    * shorpath -> restpath
+    * Add package column
+    * 拡張子の検索は完全一致に
+  * PackageTable
+    * 新規追加
+
+* milk 
+  * 'milk fav' コマンドを追加。お気に入りを設定可能に
+  * milk update 時に cleanup も行うように
+  * invoke_task を再定義して help option を処理 (thanks tomykaira)
+  * milk add 出来るスキーマを追加
+    * ssh:foo@bar/baz.git (Support gitolite, thanks hazy_moon)
+    * git@example.com:foo/bar.git
+
+* build
+  * 依存関係の記述をGemfileに移動
+
+=== 0.7.0 2012/05/05
+
+* milk
+  * 'milk add git://..' に対応、update時に`git pull`するように
+  * Thor を利用するように (thanks tomykaira)
+  
+* gmilk
+  * gotolineモード(-g)で、複数のパスを渡せるように
+    * 例: gmilk -g VERSION:1 bin/milk:9 bin/gmilk:9 lib/milkode/cdweb/app.rb:23
+  * Windows環境(SJIS) + Ruby1.9 でエンコーディングエラーが起きる問題を修正
+
+* milk web
+  * カスタマイズしても<title></title>部分がMilkodeのままになっていた問題を修正
+  * 現在位置検索が正しく動いてない問題を修正
+
+* common
+  * Package#options[:update_with_git_pull] を追加
+  * Gemfile.lock を無視した (thanks tomykaira)
+  * Remove dependency on rcov (thanks tomykaira)
+  * 環境によってYAMLオブジェクトの構文が異なり、テストが落ちる可能性があるのを対策 (thanks tomykaira)
+  
+=== 0.6.0 2012/03/28
+
+* milk web
+  * 高速化
+    * パッケージ数をmilkode.yamlから取得
+    * Database#fileList('/')をmilkode.yamlから取得
+    * CodeRay::Encoders::HTMLを直接カスタマイズすることで高速化
+  * ウェブアプリのタイトルやアイコンを簡単にカスタマイズ出来るように
+    * milk web --customize で、milkweb.yaml のテンプレートを作成
+    * milkweb.yaml を書き換えることでカスタマイズ出来ます
+  * 使い勝手の改善
+    * 近接行マッチはまとめて表示するように。
+    * 検索結果の行番号をクリックで指定行へジャンプ出来るように
+    * 検索結果はファイル名順にソートするように
+    * クリアボタンを追加
+    * ヘッダーメニューに'ヘルプ'の項目を追加
+    * ラジオボタンが未指定の時は'shead=package'に
+    * パッケージ検索を正確に
+  * CodeRay 1.0.5 に対応
+  * nokogiri, hpricot への依存を外す
+
+* common
+  * '\n' -> '$/'
+  * 'rroonga','>= 1.1.0','<2.0'
+
+=== 0.5.0 2012/03/09
+
+* milk
+  * 仕様を見直して使い勝手を大幅に改善
+  * milk add
+    * パッケージ内の.gitignoreを自動で読み込み、検索対象から外すように
+    * .gitignoreを読み込みたくない場合は --no-auto-ignore オプションを指定して下さい
+    * 大量に表示されるメッセージを抑制 (-vオプションで表示)
+    * 除外対象を指定する -i オプションを追加
+    * 'milk add .' の時に 'package : .' -> 'package : milkode' に
+  * milk ignore
+    * 検索対象に含めないファイルやディレクトリを指定することが出来る
+    * milk ignore --test で.gitignoreも含めて除外される可能性のあるファイルとディレクトリを表示
+    * milk ignore -p PACKAGE_NAME でパッケージ指定
+    * milk ignore -d IGNORE_PATH .. で除外対象から削除
+  * milk init
+    * milk init 'a_dir' でディレクトリを自動で掘ってくれるように。
+    * milk init --setdb オプションを追加
+  * milk rebuild
+    * 正確にパッケージ名を指定しなければリビルド出来ないように
+    * 引数無しで実行すると現在位置のパッケージをリビルド
+  * milk remove
+    * 正確にパッケージ名を指定しなければ削除出来ないように
+    * 引数無しで実行すると現在位置のパッケージを削除
+  * milk update
+    * 大量に表示されるメッセージを抑制 (-vオプションで表示)
+    * 'milk update NOT_EXIST_PACKAGE'の時に milkode_info が表示されないように
+  * milk setdb
+    * milk setdb --default でデフォルトデータベースに戻るように (milk setdb --reset と同義)
+  * milk pwd
+    * パッケージ名も表示するように 'milkode in ~/.milkode'
+
+* milk web
+  * ファイル毎のすべてのマッチを検索し、結果に表示するようにした (Fix #12) (thanks tomykaira, miau)
+  * ラジオボタンとラベルをタグ付け (Fix #15) (thanks tomykaira, miau)
+  * 1ファイル1マッチ'チェックボックスを追加。
+
+* lib
+  * CdstkYamlを削除
+  * Package, MilkodeYaml, YamlFileWrapperを追加。
+  * 古いバージョンのmilkode.yamlにアクセスしたら自動でアップグレードするように。
+
+=== 0.4.0 2012/02/02
+
+* gmilk 
+  * -iオプションの復活
+  * -gオプションの追加(Goto line mode)
+  * -cオプションを追加(マッチ数のみを表示)
+
+=== 0.3.0 2012/01/20
+
+* gmilk
+  * -k, -lオプションの追加、絞り込み検索が簡単に出来るように
+  * 全て小文字で入力したら大文字小文字は無視、大文字が一つでも入れば厳密に検索
+* milk 
+  * milk info コマンドを追加
+  * milk list コマンドの際、パッケージのファイル数を表示するように
+* その他
+  * cdv, cdview を削除
+
+=== 0.2.9 2011/12/24
+
+* gmilk
+  * grepのようにコマンドラインから検索可能に
+* mcd
+ * データベースに登録したパッケージを簡単にディレクトリ移動することが出来る
+* milk
+ * milk setdb を追加、デフォルトデータベースの切り替え
+ * milk update の改善、現在位置がパッケージなら
+ * milk dir を追加、指定パッケージのディレクトリ位置を表示
+ * milk mcd を追加、mcdコマンドのインストール用
+* milk web
+  * Ruby1.8の時はhpricotを(文字化けが直る)、Ruby1.9の時はnokogiriを使うように(hpricotだと日本語検索が上手くいかない)。
+  * ファイルリストをフォルダ、名前で並べ替えるように
+* MilkodeTestWorkクラスを追加、テスト向け環境構築を容易に
+  
+=== 0.2.4 2011/10/02
+
+* gem 1.3.6, 1.3.7 でインストール出来ない問題を修正
+
+=== 0.2.3 2011/09/29
+
+* webインターフェースの検索速度向上
+  * ミニファイされたJavaScript等、一行の長いファイルの検索が高速になりました。
+* 日本語ファイル名に対応
+  * #10: windows環境(mswin32)で、日本語ファイル、日英混在文字が化ける (thanks aki1999)
+  * OSXの濁点ファイル名問題を修正 (Ruby1.9.2を使えば、濁点付きの日本語ファイルを正常に処理出来ます)
+* #9: 検索文字列に特定の文字が含まれるとInternal Server Error (thanks vividtone)
+* バグ修正、特定ディレクトリ以下の検索で横のパッケージが'../milkode'のように表示されてしまう問題の修正
+* archive-zip 0.4.0に対応。vendor/archive/support/io.rb は必要なくなったので削除。
+* 既に追加済みのパッケージを再度 milk add したら milk update するように
+
+=== 0.2.2 2011/08/26
+
+* ファイル内grepを追加
+  * マッチ行へのアンカーリンクが画面上部に表示されるように
+* 駆け上がり検索を検索
+  * トピックパス(ディレクトリのリンク)をクリックした時、検索クエリーを引き継ぐように
+  * 検索ワード入力→トピックパスクリックで検索範囲の変更が可能に
+  * その都度「検索」ボタンを押さなくても、テキスト入力→トピックパスクリック、で入力した新しいキーワードで再検索出来る。
+* トピックパスの先頭に"home"を追加
+  * milkode/lib/file.rb -> home/milkode/lib/file.rb
+* 検索結果ファイル名は相対パスで表示する
+* [ファイル一覧] ボタンを追加
+* 検索ワードを入力せず検索(Enterを押す)と、エラーになる問題を修正  (thanks ryo)
+
+=== 0.2.1 2011/08/12
+
+Milkode レポジトリがバージョンアップしました。
+レポジトリをリビルドして下さい。
+
+  milk rebuild
+
+* AutoPagerizeのサポート (thanks awasira)
+* 'documents' groongaテーブル形式の変更, 'Groonga::Array -> Groonga:: Hash'.
+  * 'milk update' の高速化 (thanks kou)
+  * Issues#6 CentOS 5.5 (32bit) in 'milk update' fails (thanks yoshikaw)
+
+=== 0.2.0 2011/08/10
+
+* Issues#4 Bug fix, wrong display of search results. (thanks rakkoyaku, ryo)
+* Issues#5 Delete GoogleAnalytics code. (thanks vividtone)
+
+=== 0.1.9 2011/08/05
+
+* Bug fix, can't move 'milk web'.
+
+=== 0.1.8, 0.1.7 2011/08/04
+
+* archive-zip patch for Ruby1.9.2.
+
+=== 0.1.6 2011/08/03
+
+* Bug fix, faild 'milk init' for Ubunts. (thanks kumonopanya, and maroekun)
+
+=== 0.1.5 2011/08/02
+
+* Compatibility Ruby 1.9.2p290.
+
+=== 0.1.4 2011/08/01
+
+* To act reasonably even if it fails to require 'readline'.
+
+=== 0.1.3 2011/07/30
+
+* Change Icon.
+* Change web-app design.
+* Change text, lib/milkode/cdweb/views/help.haml.
+
+=== 0.1.2 2011/07/26
+
+* milk web --host, default value "127.0.0.1" (for Windows).
+* to update all packages at 'milk update' (no arg).
+
+=== 0.1.1 2011/07/25
+
+* Add comment.
+
+=== 0.1.0 2011/07/25
+
+* 1st release.
+

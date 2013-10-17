@@ -1,0 +1,20 @@
+= haml :header_menu
+
+.content
+  = haml :search_form
+  
+  .search-summary
+    .favstar.ss-box
+      #{favstar(@path)}
+    .keyword.ss-box
+      #{topic_path(@path, params)}
+    .hit-num.ss-box
+      #{@total_records}</span>ファイル中
+    .search-range.ss-box
+      #{@range.first} - #{@range.last}ファイルを検索
+    .match-num.ss-box
+      #{@match_num}</span>件マッチ（#{@elapsed}秒）
+    .search-summary-hook.ss-box
+      #{search_summary_hook(@path)}
+    .ss-end
+  ~ @record_content

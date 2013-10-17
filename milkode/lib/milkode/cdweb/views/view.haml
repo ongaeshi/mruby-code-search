@@ -1,0 +1,20 @@
+= haml :header_menu, :locals => {:flistpath => '..'}
+
+.content
+  = haml :search_form
+
+  .search-summary
+    .favstar.ss-box
+      #{favstar(@path)}
+    .keyword.ss-box
+      #{topic_path(@path, params)}
+    .additional-info.ss-box
+      #{additional_info(@path, params)}（#{@elapsed}秒）
+    .search-summary-hook.ss-box
+      #{search_summary_hook(@path)}
+    .ss-end
+  ~ @record_content
+
+
+
+
