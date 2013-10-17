@@ -27,7 +27,7 @@
   %body
     .container#toppage
       .row
-        .span10.offset2
+        .span12
           %h1 <a href="#{url_for '/'}"><img src=#{url_for @setting.home_icon} alt="milkode-icon" border="0" height="135px" /></a> #{@setting.home_title} <font class="version">#{@version}</font>
 
       .row
@@ -64,15 +64,20 @@
           .footer
             <a href="#{url_for '/home'}">#{@package_num}</a>のパッケージ<br>
             <a href="#{url_for '/home?query=f:*'}">#{@file_num}</a>のファイル<br>
-            <a href="#{url_for '/help'}">ヘルプ</a>
+            <a href="#{url_for '/help'}">ヘルプ</a</a>
             = @setting.about_milkode
+
+      .row
+        .span5.offset7
+          .footer
+            <br>original icon: &copy; Ruby Association LLC
 
     %script(type='text/javascript' src='#{url_for '/js/jquery-1.7.2.min.js'}')
     %script(type='text/javascript' src='#{url_for '/js/jquery-ui-1.8.22.custom.min.js'}')
     %script(type='text/javascript' src='#{url_for '/js/jquery.multiselect.min.js'}')
     %script(type='text/javascript' src='#{url_for '/js/jquery.multiselect.filter.min.js'}')
     %script(type='text/javascript' src='#{url_for '/js/milkode.js'}')
-            
+
 
     
 
