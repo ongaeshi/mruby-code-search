@@ -2,6 +2,7 @@
 require 'milkode/database/groonga_database'
 require 'milkode/common/grenfiletest'
 require 'milkode/common/ignore_checker'
+require 'milkode/common/util'
 require 'kconv'
 
 module Milkode
@@ -21,12 +22,12 @@ module Milkode
     def exec
       # git pull
       if @options[:update_with_git_pull]
-        Dir.chdir(@package.directory) { system("git pull") }        
+        Dir.chdir(@package.directory) { system("git pull") } if File.exist?(@package.directory)
       end
       
       # svn update
       if @options[:update_with_svn_update]
-        Dir.chdir(@package.directory) { system("svn update") }
+        Dir.chdir(@package.directory) { system("svn update") } if File.exist?(@package.directory)
       end
 
       # Add global .gitignore
@@ -44,12 +45,12 @@ module Milkode
       
       # ctags
       if @options[:update_with_ctags]
-        Dir.chdir(@package.directory) { system("ctags -R") }
+        Dir.chdir(@package.directory) { system("ctags -R") } if File.exist?(@package.directory)
       end
 
       # ctags -e
       if @options[:update_with_ctags_e]
-        Dir.chdir(@package.directory) { system("ctags -R -e") }
+        Dir.chdir(@package.directory) { system("ctags -R -e") } if File.exist?(@package.directory)
       end
 
       # Update time
