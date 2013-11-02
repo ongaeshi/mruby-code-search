@@ -1,4 +1,4 @@
 cd $MRUBYSEARCH_ROOT/data
 git pull
-$BUNDLER_PATH/bundle exec milk add --from-file ../PACKAGE_LIST
+bundle exec milk add --from-file ../PACKAGE_LIST
 

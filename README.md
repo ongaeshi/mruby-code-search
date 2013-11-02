@@ -8,9 +8,9 @@ Source code search engine for mruby &amp; libraries (mrbgems, ngx_mruby, mobirub
 ### Install gem
 
 ```
-$ cd /var/www/html
+$ cd /path/to
 $ git clone https://github.com/ongaeshi/mrubysearch.git
-$ cd /var/www/html/mrubysearch
+$ cd /path/to/mrubysearch
 $ bundle install --path vendor/bundle
 ```
 
@@ -36,16 +36,28 @@ $ bundle exec milk web    # http://localhost:9292
 Test.
 
 ```
-$ cd /var/www/mrubysearch
-$ MRUBYSEARCH_ROOT=/var/www/mrubysearch BUNDLER_PATH=/usr/local/bin ./tools/cron_task
+$ cd /path/to/mrubysearch
+$ MRUBYSEARCH_ROOT=/path/to/mrubysearch ./tools/cron_task
 ```
 
 Register crontab.
 
 ```
 $ crontab -e
-0	5	*	*	*	MRUBYSEARCH_ROOT=/var/www/mrubysearch /var/www/mrubysearch/tools/cron_task
+PATH=/usr/local/bin:/bin:/usr/bin:/sbin    # Set your environment
+
+0	5	*	*	*	MRUBYSEARCH_ROOT=/path/to/mrubysearch /path/to/mrubysearch/tools/cron_task
 ```
+
+With simple logging.
+
+```
+$ crontab -e
+PATH=/usr/local/bin:/bin:/usr/bin:/sbin    # Set your environment
+
+0	5	*	*	*	MRUBYSEARCH_ROOT=/path/to/mrubysearch /path/to/mrubysearch/tools/cron_task  >>/path/to/mrubysearch/log/mrubysearch.log 2>>/path/to/mrubysearch/log/mrubysearch-error.log
+```
+
 
 ## Add The Source Code That You Want To Search
 
