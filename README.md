@@ -17,7 +17,8 @@ $ bundle install --path vendor/bundle
 Initialize Milkode database
 
 ```
-$ bundle exec milk add --from-file PACKAGE_LIST
+$ cd data
+$ bundle exec milk add --from-file ../PACKAGE_LIST
 ```
 
 Check it your browser (local)
@@ -35,15 +36,15 @@ Apache configuration: [y-ken/milkode-web](https://github.com/y-ken/milkode-web)
 Test.
 
 ```
-$ cd /path/to/mrubysearch
-$ MRUBYSEARCH_ROOT=/path/to/mrubysearch ./tools/cron_task
+$ cd /var/www/mrubysearch
+$ MRUBYSEARCH_ROOT=/var/www/mrubysearch ./tools/cron_task
 ```
 
 Register crontab.
 
 ```
 $ crontab -e
-0	5	*	*	*	MRUBYSEARCH_ROOT=/path/to/mrubysearch /path/to/mrubysearch/tools/cron_task
+0	5	*	*	*	MRUBYSEARCH_ROOT=/var/www/mrubysearch /var/www/mrubysearch/tools/cron_task
 ```
 
 ## Add The Source Code That You Want To Search
