@@ -1,9 +1,0 @@
----
-version: '0.2'
-contents:
-- directory: /Users/ongaeshi/Documents/mrubysearch/data/packages/git/host-stats
-  options:
-    :update_with_git_pull: true
-- directory: /Users/ongaeshi/Documents/mrubysearch/data/packages/git/mruby-allegro
-  options:
-    :update_with_git_pull: true
