@@ -37,7 +37,7 @@ Test.
 
 ```
 $ cd /var/www/mrubysearch
-$ MRUBYSEARCH_ROOT=/var/www/mrubysearch ./tools/cron_task
+$ MRUBYSEARCH_ROOT=/var/www/mrubysearch BUNDLER_PATH=/usr/local/bin ./tools/cron_task
 ```
 
 Register crontab.
