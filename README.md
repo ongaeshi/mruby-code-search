@@ -14,7 +14,14 @@ $ cd /path/to/mrubysearch
 $ bundle install --path vendor/bundle
 ```
 
-### Initialize Milkode database
+### Initialize Milkode Database
+
+```
+$ cd /path/to/mrubysearch
+$ bundle exec milk init
+```
+
+### Add source codes to Milkode Database
 
 ```
 $ cd data
