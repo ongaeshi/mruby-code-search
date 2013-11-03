@@ -21,14 +21,14 @@ $ cd /path/to/mrubysearch
 $ bundle exec milk init
 ```
 
-### Add source codes to Milkode Database
+### Add source codes in Milkode Database
 
 ```
 $ cd data
 $ bundle exec milk add --from-file ../PACKAGE_LIST
 ```
 
-### Check it your browser (local)
+### Check it in your browser (local)
 
 ```
 $ bundle exec milk web    # http://localhost:9292
@@ -68,8 +68,8 @@ PATH=/usr/local/bin:/bin:/usr/bin:/sbin    # Set your environment
 
 ## Add The Source Code That You Want To Search
 
-1. Fork [ongaeshi/mrubysearch](https://github.com/ongaeshi/mrubysearch/tree/master)
-2. Add repository URL that you want to search to [mrubysearch/PACKAGE_LIST](https://github.com/ongaeshi/mrubysearch/blob/master/PACKAGE_LIST) (Please alphabetical order)
-3. Pull request
+1. Fork [ongaeshi/mrubysearch](https://github.com/ongaeshi/mrubysearch/tree/master).
+2. Add a repository URL that you want to search in [mrubysearch/PACKAGE_LIST](https://github.com/ongaeshi/mrubysearch/blob/master/PACKAGE_LIST) in alphabetical order.
+3. Send us a pull request.
 
 
