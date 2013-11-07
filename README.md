@@ -1,12 +1,14 @@
 mruby Code Search
 ===========
 
-Source code search engine for mruby &amp; libraries 
+Source code search engine for mruby &amp; libraries.
 
 - mrbgems
 - ngx_mruby
 - mobiruby
-- etc..
+- etc.
+
+http://mruby-code-search.ongaeshi.me
 
 ## Deploy
 
