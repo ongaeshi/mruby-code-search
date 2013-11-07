@@ -1,4 +1,4 @@
-mruby-code-search
+mruby Code Search
 ===========
 
 Source code search engine for mruby &amp; libraries 
