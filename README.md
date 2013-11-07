@@ -1,7 +1,12 @@
-mrubysearch
+mruby-code-search
 ===========
 
-Source code search engine for mruby &amp; libraries (mrbgems, ngx_mruby, mobiruby, etc)
+Source code search engine for mruby &amp; libraries 
+
+- mrbgems
+- ngx_mruby
+- mobiruby
+- etc..
 
 ## Deploy
 
@@ -9,15 +14,15 @@ Source code search engine for mruby &amp; libraries (mrbgems, ngx_mruby, mobirub
 
 ```
 $ cd /path/to
-$ git clone https://github.com/ongaeshi/mrubysearch.git
-$ cd /path/to/mrubysearch
+$ git clone https://github.com/ongaeshi/mruby-code-search.git
+$ cd /path/to/mruby-code-search
 $ bundle install --path vendor/bundle
 ```
 
 ### Initialize Milkode Database
 
 ```
-$ cd /path/to/mrubysearch
+$ cd /path/to/mruby-code-search
 $ bundle exec milk init
 ```
 
@@ -43,8 +48,8 @@ $ bundle exec milk web    # http://localhost:9292
 Test.
 
 ```
-$ cd /path/to/mrubysearch
-$ MRUBYSEARCH_ROOT=/path/to/mrubysearch ./tools/cron_task
+$ cd /path/to/mruby-code-search
+$ ./tools/cron_task
 ```
 
 Register crontab.
@@ -53,7 +58,7 @@ Register crontab.
 $ crontab -e
 PATH=/usr/local/bin:/bin:/usr/bin:/sbin    # Set your environment
 
-0	5	*	*	*	MRUBYSEARCH_ROOT=/path/to/mrubysearch /path/to/mrubysearch/tools/cron_task
+0	5	*	*	*	cd /path/to/mruby-code-search; ./tools/cron_task
 ```
 
 With simple logging.
@@ -62,14 +67,14 @@ With simple logging.
 $ crontab -e
 PATH=/usr/local/bin:/bin:/usr/bin:/sbin    # Set your environment
 
-0	5	*	*	*	MRUBYSEARCH_ROOT=/path/to/mrubysearch /path/to/mrubysearch/tools/cron_task  >>/path/to/mrubysearch/log/mrubysearch.log 2>>/path/to/mrubysearch/log/mrubysearch-error.log
+0	5	*	*	*	cd /path/to/mruby-code-search; ./tools/cron_task >>./log/mruby-code-search.log 2>>./log/mruby-code-search-error.log
 ```
 
 
 ## Add The Source Code That You Want To Search
 
-1. Fork [ongaeshi/mrubysearch](https://github.com/ongaeshi/mrubysearch/tree/master).
-2. Add a repository URL that you want to search to [mrubysearch/PACKAGE_LIST](https://github.com/ongaeshi/mrubysearch/blob/master/PACKAGE_LIST) in alphabetical order.
+1. Fork [ongaeshi/mruby-code-search](https://github.com/ongaeshi/mruby-code-search/tree/master).
+2. Add a repository URL that you want to search to [mruby-code-search/PACKAGE_LIST](https://github.com/ongaeshi/mruby-code-search/blob/master/PACKAGE_LIST) in alphabetical order.
 3. Send us a pull request.
 
 

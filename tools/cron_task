@@ -1,5 +1,5 @@
 date +'[%Y-%m-%d %H:%M:%S]'
-cd $MRUBYSEARCH_ROOT/data
+cd data
 git pull
 bundle exec milk add --from-file ../PACKAGE_LIST
 
