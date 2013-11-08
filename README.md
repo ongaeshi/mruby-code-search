@@ -1,12 +1,7 @@
 mruby Code Search
 ===========
 
-Source code search engine for mruby &amp; libraries.
-
-- mrbgems
-- ngx_mruby
-- mobiruby
-- etc.
+Source code search engine for mruby &amp; libraries. (mrbgems, ngx_mruby, mobiruby, etc.)
 
 http://mruby-code-search.ongaeshi.me
 
@@ -25,7 +20,7 @@ $ bundle install --path vendor/bundle
 
 ```
 $ cd /path/to/mruby-code-search
-$ bundle exec milk init
+$ bundle exec milk init data
 ```
 
 ### Add source codes to Milkode Database
