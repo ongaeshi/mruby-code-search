@@ -1,10 +1,10 @@
 ---
 :home_title  : "mruby Code Search"
-:home_icon   : "http://mrubysearch.ongaeshi.me/images/mrubysearch-logo.png"
+:home_icon   : "http://mruby-code-search.ongaeshi.me/images/mruby-code-search-logo.png"
 
 :header_title: ""
-:header_icon: "http://mrubysearch.ongaeshi.me/images/mrubysearch-logo.png"
+:header_icon: "http://mruby-code-search.ongaeshi.me/images/mruby-code-search-logo.png"
 
-:favicon: "http://mrubysearch.ongaeshi.me/images/mrubysearch-favicon.ico"
+:favicon: "http://mruby-code-search.ongaeshi.me/images/mruby-code-search-favicon.ico"
 
 :display_about_milkode: true
