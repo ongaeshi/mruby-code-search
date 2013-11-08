@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
-#
-# @file 
-# @brief
-# @author ongaeshi
-# @date   2011/06/25
-
 require 'rubygems'
 require 'sinatra'
+require 'sass'
+require 'haml'
+require 'i18n'
+
 if ENV['MILKODE_SINATRA_RELOADER']
   require 'sinatra/reloader'
   also_reload '../../**/*.rb'
 end
-require 'sass'
-require 'haml'
-require 'i18n'
 
 $LOAD_PATH.unshift '../..'
 require 'milkode/common/util'
@@ -26,11 +21,10 @@ require 'milkode/cdweb/lib/info_home'
 require 'milkode/cdweb/lib/info_package'
 require 'sinatra/url_for'
 
+I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'locales', '*.yml').to_s]
+
 set :haml, :format => :html5
 enable :sessions
-
-# We're going to load the paths to locale files,
-I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'locales', '*.yml').to_s]
 
 get '/js/:filename' do
   content_type :js
@@ -112,7 +106,7 @@ post '/command' do
   when 'favorite'
     Database.instance.set_fav(params[:name], params[:favorited] == 'true')
     @package_list = PackageList.new(Database.instance.grndb, url_for(''))
-    "お気に入り: " + @package_list.favorite_list({})
+    t(:favorite) + ": " + @package_list.favorite_list({})
   end
 end
 
@@ -122,18 +116,19 @@ get '/home*' do |path|
   record = Database.instance.record(path)
   @package_list = PackageList.new(Database.instance.grndb, url_for(''))
   suburl = url_for('')
+  update_locale
 
   if path.empty?
     if (params[:query] and !params[:query].empty?)
-      search(path, params, before, suburl)
+      search(path, params, before, suburl, @locale)
     else
-      packages(params, before, suburl)
+      packages(params, before, suburl, @locale)
     end
   elsif (record)
     view(record, params, before)
   else
     if (params[:query] and !params[:query].empty?)
-      search(path, params, before, suburl)
+      search(path, params, before, suburl, @locale)
     else
       filelist(path, params, before, suburl)
     end
@@ -244,11 +239,12 @@ EOF
     flist = File.join("#{suburl}/home/#{path}", flistpath)
 
     package_name = ""
-    modal_body = "全てのパッケージを更新しますか？"
+    modal_body = t(:update_all)
 
     if (path != "")
       package_name = path.split('/')[0]
-      modal_body = "#{package_name} を更新しますか？"
+      update_locale
+      modal_body = I18n.t(:update_package, {package_name: package_name, locale: @locale})
     end
 
     info_path = "#{suburl}/info"
@@ -411,12 +407,23 @@ EOF
     @env["HTTP_ACCEPT_LANGUAGE"][0,2]
   end
 
-  def t(*args)
-    # Just a simple alias
+  def update_locale
     unless @locale
-      @locale = params[:locale] || session[:locale] || ua_locale || 'en'
-      session[:locale] = @locale
+      begin
+        # Support session
+        @locale = params[:locale] || session[:locale] || ua_locale || 'en'
+        session[:locale] = @locale
+      rescue NameError          # 'session' variable can't find during testing
+        @locale = 'en'
+      end
+        
+      # Reload with sinatra-reloader
+      I18n.reload! if ENV['MILKODE_SINATRA_RELOADER']
     end
+  end
+
+  def t(*args)
+    update_locale
     I18n.t(*args, locale: @locale)
   end
 end
