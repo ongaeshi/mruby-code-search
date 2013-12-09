@@ -74,8 +74,9 @@ https://github.com/mattn/mruby-winapp.git
 https://github.com/mobiruby/mobiruby-ios.git
 https://github.com/mobiruby/mruby-cfunc.git
 https://github.com/mobiruby/mruby-cocoa.git
+https://github.com/mrbrdo/mruby_cc.git
 https://github.com/mruby/mruby.git
-https://github.com/ongaeshi/mrubysearch.git
+https://github.com/ongaeshi/mruby-code-search.git
 https://github.com/ongaeshi/rubykokuban-gem.git
 https://github.com/ongaeshi/rubykokuban-osx.git
 https://github.com/ppibburr/mruby-allocate.git
